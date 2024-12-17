@@ -10,14 +10,36 @@ import java.util.Objects;
  */
 public class Task {
     private String description;
+    private Date dueTime;
 
     /**
-     * Constructeur pour créer une nouvelle tâche avec sa description .
+     * Obtient la date d'échéance de la tâche.
+     *
+     * @return La date d'échéance de la tâche.
+     */
+    public Date getDueTime() {
+        return dueTime;
+    }
+
+    /**
+     * Définit la date d'échéance de la tâche.
+     *
+     * @param dueTime La nouvelle date d'échéance de la tâche.
+     */
+    public void setDueTime(Date dueTime) {
+        this.dueTime = dueTime;
+    }
+
+    /**
+     * Constructeur pour créer une nouvelle tâche avec sa description et sa date.
      *
      * @param description La description de la tâche.
+     * @param dueTime La date de la tâhce.
      */
-    public Task(String description) {
+    public Task(String description, Date dueTime) {
+
         this.description = description;
+        this.dueTime = dueTime;
     }
 
     /**
@@ -49,7 +71,7 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(description, task.description);
+        return Objects.equals(description, task.description) && Objects.equals(dueTime, task.dueTime);
     }
 
     /**
@@ -59,6 +81,6 @@ public class Task {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(description);
+        return Objects.hash(description, dueTime);
     }
 }
